@@ -12,16 +12,6 @@ public class Wallet {
         this.value = new ArrayList<>();
         this.quantity = new ArrayList<>();
     }
-
-    public void put(float val, Integer quant){
-        int pos=value.indexOf(val);
-        if(pos!=-1){
-            this.quantity.set(pos, this.quantity.get(pos)+quant;
-        } else{
-            value.add(val);
-            quantity.add(quant);
-    }
-    }
     public ArrayList<Float> getValue() {
         return value;
     }
@@ -46,7 +36,7 @@ public class Wallet {
     public float getTotal(){
         float total=0;
         for(float val:this.value){
-            total+=val*this.getQuantity(val));
+            total+=val*this.getQuantity(val);
         }
         return total;
     }
@@ -54,10 +44,10 @@ public class Wallet {
     public void information(){
         for(float val:this.value){
             if(val>=1){
-            System.out.println("Dollar Bill: "+val+" -> "+this.getQuantity(val));
-        }else{
-            System.out.println("Coins "+val+" -> "+this.getQuantity(val));
+                System.out.println("Dollar Bill: "+val+" -> "+this.getQuantity(val));
+            }else{
+                System.out.println("Coins "+val+" -> "+this.getQuantity(val));
+            }
         }
-    }
     }
 }

@@ -1,14 +1,13 @@
 package main.core;
 
-public class Drinks extends Product implements Sell{
+public class HealthyFood extends Product {
 
-    private final double mililiters;
+    private final double weight;
 
-    public Drinks(double price, String name, int id, int quantity) {
+    public HealthyFood(double price, String name, int id, int quantity) {
         super(price, name, id, quantity);
-        this.mililiters = 330;
+        this.weight = 100;
     }
-
 
     @Override
     public boolean isAvailable() {
@@ -24,5 +23,4 @@ public class Drinks extends Product implements Sell{
     public void upPrice(int percentage) {
 
     }
-
 }

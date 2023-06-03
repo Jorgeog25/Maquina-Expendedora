@@ -1,4 +1,4 @@
-package main.core;
+package main.core.exceptions;
 
 public class JamException extends Exception{
     public JamException() {

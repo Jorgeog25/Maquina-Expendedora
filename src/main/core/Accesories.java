@@ -11,18 +11,11 @@ public class Accesories extends Product implements Sell{
 
     @Override
     public boolean isAvailable() {
-
-        if(stock>0){
-            return true;
-        }
         return false;
     }
 
     @Override
     public void replanishStock(int elements) {
-        if(stock<=0){
-
-        }
 
     }
 
@@ -31,18 +24,5 @@ public class Accesories extends Product implements Sell{
 
     }
 
-    @Override
-    public Wallet changueManagement(Wallet clientMoney, float productPrice) {
-        return null;
-    }
 
-    @Override
-    public Alerts jamMaybe() {
-        return null;
-    }
-
-    @Override
-    public Alerts failureMaybe() {
-        return null;
-    }
 }

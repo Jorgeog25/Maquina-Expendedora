@@ -1,0 +1,31 @@
+@startuml
+class Accesories extends Product implements Sell{
+}
+class Drinks extends Product implements Sell{
+}
+abstract Food extends Product implements Sell{
+}
+class Gluten extends Food{
+}
+class GlutenFree extends Food{
+}
+class Machine{
+}
+class Management{
+}
+abstract Product{
+}
+class Wallet{
+}
+interface Sell{
+}
+enum Alerts{
+}
+class FailureException extends Exception{
+}
+class JamException extends Exception{
+}
+
+
+
+@enduml

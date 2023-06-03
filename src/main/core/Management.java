@@ -1,4 +1,9 @@
 package main.core;
 
-public class Management {
+import java.util.Scanner;
+
+public interface Management {
+
+    public int askNumber();
+
 }

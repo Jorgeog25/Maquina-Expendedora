@@ -14,6 +14,7 @@ public abstract class Product {
         this.units = 10;
     }
 
+
     public Product(double price, String name, int id, int quantity) {
         this.price = price;
         this.name = name;
@@ -37,7 +38,7 @@ public abstract class Product {
         this.name = name;
     }
 
-    public int getId() {
+    public int getProductId() {
         return id;
     }
 
