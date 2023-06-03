@@ -7,10 +7,59 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Machine drinkMachine = new Machine(1);
+        Wallet walletMachine1 = new Wallet();
+        List<Double> valueMachine1 = new ArrayList<>();
+        List<Integer> quantityMachine1 = new ArrayList<>();
+        walletMachine1.addValue((ArrayList<Double>) valueMachine1);
+        quantityMachine1.add(10);
+        quantityMachine1.add(20);
+        quantityMachine1.add(20);
+        quantityMachine1.add(10);
+        quantityMachine1.add(5);
+        quantityMachine1.add(2);
+        quantityMachine1.add(1);
+        quantityMachine1.add(3);
+        walletMachine1.setQuantity((ArrayList<Integer>) quantityMachine1);
+        walletMachine1.setValue((ArrayList<Double>) valueMachine1);
+
+        Wallet walletMachine2 = new Wallet();
+        List<Double> valueMachine2 = new ArrayList<>();
+        List<Integer> quantityMachine2 = new ArrayList<>();
+        walletMachine2.addValue((ArrayList<Double>) valueMachine2);
+        quantityMachine2.add(20);
+        quantityMachine2.add(30);
+        quantityMachine2.add(25);
+        quantityMachine2.add(15);
+        quantityMachine2.add(7);
+        quantityMachine2.add(3);
+        quantityMachine2.add(2);
+        quantityMachine2.add(3);
+        walletMachine2.setQuantity((ArrayList<Integer>) quantityMachine2);
+        walletMachine2.setValue((ArrayList<Double>) valueMachine2);
+
+        Wallet walletMachine3 = new Wallet();
+        List<Double> valueMachine3 = new ArrayList<>();
+        List<Integer> quantityMachine3 = new ArrayList<>();
+        walletMachine3.addValue((ArrayList<Double>) valueMachine3);
+        quantityMachine3.add(20);
+        quantityMachine3.add(30);
+        quantityMachine3.add(25);
+        quantityMachine3.add(15);
+        quantityMachine3.add(7);
+        quantityMachine3.add(3);
+        quantityMachine3.add(2);
+        quantityMachine3.add(3);
+        walletMachine3.setQuantity((ArrayList<Integer>) quantityMachine3);
+        walletMachine3.setValue((ArrayList<Double>) valueMachine3);
+
+
+
+        Machine drinkMachine = new Machine(1, walletMachine1);
         List<Product> drinksList = new ArrayList<>();
-        Machine snackMachine = new Machine(2);
+        Machine healthyMachine = new Machine(2, walletMachine2);
         List<Product> snacksList = new ArrayList<>();
+        Machine unhealthyMachine = new Machine(3, walletMachine3);
+        List<Product> unhealthyList = new ArrayList<>();
         MachinePrinting machinePrinting = new MachinePrinting();
 
         Drinks cocaCola = new Drinks(1, "Coca Cola", 10, 10);
@@ -33,15 +82,26 @@ public class Main {
         snacksList.add(orange);
         snacksList.add(pear);
 
+        UnhealthyFood chips = new UnhealthyFood(1, "Chips", 10, 10);
+        UnhealthyFood chocolate = new UnhealthyFood(2, "Chocolate", 50, 10);
+        UnhealthyFood cookies = new UnhealthyFood(3, "Cookies", 30, 10);
+        UnhealthyFood candy = new UnhealthyFood(4, "Candy", 12, 10);
+        unhealthyList.add(chips);
+        unhealthyList.add(chocolate);
+        unhealthyList.add(cookies);
+        unhealthyList.add(candy);
+
 
         drinkMachine.setProducts((ArrayList<Product>) drinksList);
-        snackMachine.setProducts((ArrayList<Product>) snacksList);
+        healthyMachine.setProducts((ArrayList<Product>) snacksList);
+        unhealthyMachine.setProducts((ArrayList<Product>) unhealthyList);
 
         machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
-        machinePrinting.printMachineProducts(snackMachine, snackMachine.getID());
+        machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
+        machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
 
-        DrinksManagement drinksManagement = new DrinksManagement();
-        drinksManagement.selectMachine();
+        Management management = new Management();
+        management.selectMachine();
 
     }
 }

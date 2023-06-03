@@ -2,11 +2,8 @@ package main.core;
 
 public class HealthyFood extends Product {
 
-    private final double weight;
-
     public HealthyFood(double price, String name, int id, int quantity) {
         super(price, name, id, quantity);
-        this.weight = 100;
     }
 
     @Override

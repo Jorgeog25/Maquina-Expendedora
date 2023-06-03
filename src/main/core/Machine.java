@@ -8,9 +8,10 @@ import java.util.Random;
         private Wallet money;
 
 
-    public Machine(int id){
+    public Machine(int id, Wallet money){
         this.id = id;
         this.products = new ArrayList<>();
+        this.money = money;
     }
 
         public ArrayList<Product> getProducts() {

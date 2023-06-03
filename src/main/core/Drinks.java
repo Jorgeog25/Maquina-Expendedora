@@ -2,11 +2,8 @@ package main.core;
 
 public class Drinks extends Product implements Sell{
 
-    private final double mililiters;
-
     public Drinks(double price, String name, int id, int quantity) {
         super(price, name, id, quantity);
-        this.mililiters = 330;
     }
 
 
