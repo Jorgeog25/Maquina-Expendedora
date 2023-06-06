@@ -7,6 +7,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+
+
         DrinkWallet walletMachine1 = new DrinkWallet();
         List<Double> valueMachine1 = new ArrayList<>();
         List<Integer> quantityMachine1 = new ArrayList<>();
@@ -41,6 +43,7 @@ public class Main {
         Machine unhealthyMachine = new Machine(3, walletMachine3);
         List<Product> unhealthyList = new ArrayList<>();
         MachinePrinting machinePrinting = new MachinePrinting();
+        /* initializes the machines */
 
         Drinks cocaCola = new Drinks(1, "Coca Cola", 10, 10);
         Drinks fanta = new Drinks(2, "Fanta", 50, 10);
@@ -52,6 +55,7 @@ public class Main {
         drinksList.add(sprite);
         drinksList.add(pepsi);
         drinksList.add(mirinda);
+
 
         HealthyFood apple = new HealthyFood(1, "Apple", 10, 10);
         HealthyFood banana = new HealthyFood(2, "Banana", 50, 10);
@@ -70,18 +74,60 @@ public class Main {
         unhealthyList.add(chocolate);
         unhealthyList.add(cookies);
         unhealthyList.add(candy);
+        /*list of products */
 
 
         drinkMachine.setProducts((ArrayList<Product>) drinksList);
         healthyMachine.setProducts((ArrayList<Product>) snacksList);
         unhealthyMachine.setProducts((ArrayList<Product>) unhealthyList);
+        /* adds the products to the machines */
 
-        machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
-        machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
-        machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
 
-        Management management = new Management();
-        management.selectMachine();
+        Options options = new Options(3);
+        options.add("Buy a product");
+        options.add("Refill a product");
+        options.add("Exit");
+        /* adds the options to the menu */
+
+
+        boolean exit = true;
+
+
+        do{
+            options.print();
+
+            if (options.askOption() == 0){
+
+                machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
+                machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
+                machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
+                Management management = new Management();
+
+                switch (management.selectMachine()){
+                    case 1:
+                        machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
+                        drinkMachine.buyProduct(management.askNumber());
+                        break;
+                    case 2:
+                        machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
+                        healthyMachine.buyProduct(management.askNumber());
+                        break;
+                    case 3:
+                        machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
+                        unhealthyMachine.buyProduct(management.askNumber());
+                        break;
+                }
+                exit = false;
+            }
+
+
+
+
+
+
+        }while(exit);
+
+
 
     }
 }

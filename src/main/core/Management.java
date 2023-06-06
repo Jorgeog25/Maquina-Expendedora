@@ -10,21 +10,21 @@ public class Management {
         int num = number.nextInt();
         return num;
     }
-    public void selectMachine(){}{
-        System.out.println("Which machine would you like to select?");
+    public int selectMachine(){
 
-        switch (askNumber()){
+        System.out.println("Which machine would you like to select?");
+        switch (askNumber()) {
             case 1:
                 System.out.println("You selected the Drinking Machine");
-                break;
+                return 1;
             case 2:
                 System.out.println("You selected the Healthy Snack Machine");
-                break;
+                return 2;
+
             case 3:
                 System.out.println("You selected the Unhealthy Snack Machine");
-                break;
+                return 3;
         }
-
-
+        return 0;
     }
 }
