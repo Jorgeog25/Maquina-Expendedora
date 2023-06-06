@@ -42,4 +42,17 @@ public class Machine {
             System.out.println(p.getName()+" "+p.getPrice()+" "+p.getUnits());
         }
     }
+    public void buyProduct(int id){
+        for(Product p:this.products){
+            if(p.getProductId()==id){
+                if(p.getUnits()>0){
+                    p.setUnits(p.getUnits()-1);
+                    this.money.setMoney(this.money.getMoney()+p.getPrice());
+                }
+                else{
+                    System.out.println("Product not available");
+                }
+            }
+        }
+    }
 }
