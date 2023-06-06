@@ -7,52 +7,32 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Wallet walletMachine1 = new Wallet();
+        DrinkWallet walletMachine1 = new DrinkWallet();
         List<Double> valueMachine1 = new ArrayList<>();
         List<Integer> quantityMachine1 = new ArrayList<>();
         walletMachine1.addValue((ArrayList<Double>) valueMachine1);
-        quantityMachine1.add(10);
-        quantityMachine1.add(20);
-        quantityMachine1.add(20);
-        quantityMachine1.add(10);
-        quantityMachine1.add(5);
-        quantityMachine1.add(2);
-        quantityMachine1.add(1);
-        quantityMachine1.add(3);
+        walletMachine1.addQuantityMachine1((ArrayList<Integer>) quantityMachine1);
         walletMachine1.setQuantity((ArrayList<Integer>) quantityMachine1);
         walletMachine1.setValue((ArrayList<Double>) valueMachine1);
+        /* adds the values and quantities to the wallet of the first machine */
 
-        Wallet walletMachine2 = new Wallet();
+        HealthyWallet walletMachine2 = new HealthyWallet();
         List<Double> valueMachine2 = new ArrayList<>();
         List<Integer> quantityMachine2 = new ArrayList<>();
         walletMachine2.addValue((ArrayList<Double>) valueMachine2);
-        quantityMachine2.add(20);
-        quantityMachine2.add(30);
-        quantityMachine2.add(25);
-        quantityMachine2.add(15);
-        quantityMachine2.add(7);
-        quantityMachine2.add(3);
-        quantityMachine2.add(2);
-        quantityMachine2.add(3);
+        walletMachine2.addQuantityMachine2((ArrayList<Integer>) quantityMachine2);
         walletMachine2.setQuantity((ArrayList<Integer>) quantityMachine2);
         walletMachine2.setValue((ArrayList<Double>) valueMachine2);
+        /* adds the values and quantities to the wallet of the second machine */
 
-        Wallet walletMachine3 = new Wallet();
+        UnhealthyWallet walletMachine3 = new UnhealthyWallet();
         List<Double> valueMachine3 = new ArrayList<>();
         List<Integer> quantityMachine3 = new ArrayList<>();
         walletMachine3.addValue((ArrayList<Double>) valueMachine3);
-        quantityMachine3.add(20);
-        quantityMachine3.add(30);
-        quantityMachine3.add(25);
-        quantityMachine3.add(15);
-        quantityMachine3.add(7);
-        quantityMachine3.add(3);
-        quantityMachine3.add(2);
-        quantityMachine3.add(3);
+        walletMachine3.addQuantityMachine3((ArrayList<Integer>) quantityMachine3);
         walletMachine3.setQuantity((ArrayList<Integer>) quantityMachine3);
         walletMachine3.setValue((ArrayList<Double>) valueMachine3);
-
-
+        /* adds the values and quantities to the wallet of the third machine */
 
         Machine drinkMachine = new Machine(1, walletMachine1);
         List<Product> drinksList = new ArrayList<>();

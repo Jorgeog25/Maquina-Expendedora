@@ -2,7 +2,7 @@ package main.core;
 
 import java.util.ArrayList;
 
-public class Wallet {
+public abstract class Wallet {
 
     private ArrayList<Double> value;
     private ArrayList<Integer> quantity;
@@ -21,6 +21,7 @@ public class Wallet {
         value.add(10);
         value.add(20);
     }
+    public void addQuantityMachine1(ArrayList quantity){}
 
     public void setValue(ArrayList<Double> value) {
         this.value = value;

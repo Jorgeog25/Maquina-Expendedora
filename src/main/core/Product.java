@@ -1,6 +1,6 @@
 package main.core;
 
-public abstract class Product {
+public abstract class Product implements Food{
 
     protected double price;
     protected String name;
@@ -15,11 +15,11 @@ public abstract class Product {
     }
 
 
-    public Product(double price, String name, int id, int quantity) {
+    public Product(double price, String name, int id, int units) {
         this.price = price;
         this.name = name;
         this.id = id;
-        this.units = quantity;
+        this.units = units;
     }
 
     public double getPrice() {
@@ -53,10 +53,4 @@ public abstract class Product {
     public void setUnits(int units) {
         this.units = units;
     }
-
-    public abstract boolean isAvailable();
-
-    public abstract void replanishStock(int elements);
-
-    public abstract void upPrice(int percentage);
 }

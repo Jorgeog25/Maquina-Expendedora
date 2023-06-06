@@ -1,11 +1,10 @@
 package main.print;
 
 import main.core.Machine;
-import main.core.Product;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class MachinePrinting {
+    final String instruction = "     Units->Name->Id";
     private int machineHigh;
     private int machineBroad;
 
@@ -15,6 +14,7 @@ public class MachinePrinting {
     }
 
     public void printMachineProducts(Machine machine, int machineId) {
+        int productUnits;
         String productName;
         int productId;
         boolean fileInUse = false;
@@ -34,13 +34,18 @@ public class MachinePrinting {
                     fileInUse = false;
                 } else if (i == machineBroad - 1) {
                     System.out.print("=");
+                } else if (i == 1 && j == 1){
+                    System.out.print(instruction);
+                    machineHigh -= (instruction.length() - 1);
+                    fileInUse =true;
                 } else {
                     try {
                         if (!fileInUse) {
+                            productUnits = machine.getProducts().get(a).getUnits();
                             productName = machine.getProducts().get(a).getName();
                             productId = machine.getProducts().get(a).getProductId();
-                            System.out.print("       " + productName + "->" + productId);
-                            machineHigh -= (productName.length() + 10);
+                            System.out.print("     "+ productUnits+ "->" + productName + "->" + productId);
+                            machineHigh -= (productName.length() + 12);
                             a++;
                             fileInUse = true;
                         } else {

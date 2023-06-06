@@ -1,8 +1,8 @@
 package main.core;
 
 import java.util.ArrayList;
-import java.util.Random;
-    public class Machine implements Sell{
+
+public class Machine {
         private int id;
         private ArrayList<Product> products;
         private Wallet money;
