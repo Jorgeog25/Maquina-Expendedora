@@ -4,7 +4,7 @@ import main.core.Machine;
 
 
 public class MachinePrinting {
-    final String instruction = "     Units->Name->Id";
+    final String instruction = "  Units->Name->Id->Price";
     private int machineHigh;
     private int machineBroad;
 
@@ -18,6 +18,7 @@ public class MachinePrinting {
         String productName;
         int productId;
         boolean fileInUse = false;
+        double productPrice;
         int a = 0;
         System.out.println("Machine " + machineId);
         for (int i = 0; i < machineBroad; i++) {
@@ -44,8 +45,9 @@ public class MachinePrinting {
                             productUnits = machine.getProducts().get(a).getUnits();
                             productName = machine.getProducts().get(a).getName();
                             productId = machine.getProducts().get(a).getProductId();
-                            System.out.print("     "+ productUnits+ "->" + productName + "->" + productId);
-                            machineHigh -= (productName.length() + 12);
+                            productPrice = machine.getProducts().get(a).getPrice();
+                            System.out.print("  "+ productUnits+ "->" + productName + "->" + productId + "->" + productPrice);
+                            machineHigh -= (productName.length() + 14);
                             a++;
                             fileInUse = true;
                         } else {

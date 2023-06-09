@@ -1,41 +1,59 @@
 package main.core;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Wallet {
+public class Wallet {
 
-    private ArrayList<Double> value;
-    private ArrayList<Integer> quantity;
-
+    private ArrayList<Coin> coins;
     public Wallet(){
-        this.value = new ArrayList<>();
-        this.quantity = new ArrayList<>();
+        this.coins = new ArrayList<>();
     }
-    public void addValue(ArrayList value){
-        value.add(0.05);
-        value.add(0.10);
-        value.add(0.25);
-        value.add(1.0);
-        value.add(2.0);
-        value.add(5);
-        value.add(10);
-        value.add(20);
-    }
-    public void addQuantityMachine1(ArrayList quantity){}
+    public void addCoins(){
+        this.coins.add(new Coin(20.00, 10));
+        this.coins.add(new Coin(10.00, 10));
+        this.coins.add(new Coin(5.00, 10));
+        this.coins.add(new Coin(2.00, 10));
+        this.coins.add(new Coin(1.00, 10));
+        this.coins.add(new Coin(0.50, 10));
+        this.coins.add(new Coin(0.20, 10));
+        this.coins.add(new Coin(0.10, 10));
+        this.coins.add(new Coin(0.05, 10));
 
-    public void setValue(ArrayList<Double> value) {
-        this.value = value;
     }
-
-    public ArrayList<Integer> getQuantity(double val) {
-        return quantity;
+    public int total() {
+        int total = 0;
+        for (Coin c : this.coins) {
+            total += c.getValue() * c.getQuantity();
+        }
+        return total;
     }
+    public void checkCoins(double change){
+        boolean changePossible = true;
+        double changeToUser = change;
+        for(Coin c:this.coins) {
+            do {
+                if (c.getValue() <= change) {
+                    c.setQuantity(c.getQuantity() - 1);
+                    change -= c.getValue();
 
-    public void setQuantity(ArrayList<Integer> quantity) {
-        this.quantity = quantity;
+                }
+            } while (c.getValue() <= change);
+        }
+        System.out.println("Your change is: "+changeToUser);
     }
+    public void checkToAddCoins(double price){
 
-    public ArrayList<Double> getValue() {
-        return value;
+        for(Coin c:this.coins) {
+            if (c.getValue() <= price) {
+                c.setQuantity(c.getQuantity() + 1);
+                price -= c.getValue();
+            }
+        }
+    }
+    public void printWallet(){
+        for(Coin c:this.coins){
+            System.out.println(c.getValue()+"€ -- "+c.getQuantity());
+        }
     }
 }

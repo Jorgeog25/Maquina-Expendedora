@@ -9,31 +9,16 @@ public class Main {
 
 
 
-        DrinkWallet walletMachine1 = new DrinkWallet();
-        List<Double> valueMachine1 = new ArrayList<>();
-        List<Integer> quantityMachine1 = new ArrayList<>();
-        walletMachine1.addValue((ArrayList<Double>) valueMachine1);
-        walletMachine1.addQuantityMachine1((ArrayList<Integer>) quantityMachine1);
-        walletMachine1.setQuantity((ArrayList<Integer>) quantityMachine1);
-        walletMachine1.setValue((ArrayList<Double>) valueMachine1);
+        Wallet walletMachine1 = new Wallet();
+        walletMachine1.addCoins();
         /* adds the values and quantities to the wallet of the first machine */
 
-        HealthyWallet walletMachine2 = new HealthyWallet();
-        List<Double> valueMachine2 = new ArrayList<>();
-        List<Integer> quantityMachine2 = new ArrayList<>();
-        walletMachine2.addValue((ArrayList<Double>) valueMachine2);
-        walletMachine2.addQuantityMachine2((ArrayList<Integer>) quantityMachine2);
-        walletMachine2.setQuantity((ArrayList<Integer>) quantityMachine2);
-        walletMachine2.setValue((ArrayList<Double>) valueMachine2);
+        Wallet walletMachine2 = new Wallet();
+        walletMachine2.addCoins();
         /* adds the values and quantities to the wallet of the second machine */
 
-        UnhealthyWallet walletMachine3 = new UnhealthyWallet();
-        List<Double> valueMachine3 = new ArrayList<>();
-        List<Integer> quantityMachine3 = new ArrayList<>();
-        walletMachine3.addValue((ArrayList<Double>) valueMachine3);
-        walletMachine3.addQuantityMachine3((ArrayList<Integer>) quantityMachine3);
-        walletMachine3.setQuantity((ArrayList<Integer>) quantityMachine3);
-        walletMachine3.setValue((ArrayList<Double>) valueMachine3);
+        Wallet walletMachine3 = new Wallet();
+        walletMachine3.addCoins();
         /* adds the values and quantities to the wallet of the third machine */
 
         Machine drinkMachine = new Machine(1, walletMachine1);
@@ -76,55 +61,83 @@ public class Main {
         unhealthyList.add(candy);
         /*list of products */
 
-
         drinkMachine.setProducts((ArrayList<Product>) drinksList);
         healthyMachine.setProducts((ArrayList<Product>) snacksList);
         unhealthyMachine.setProducts((ArrayList<Product>) unhealthyList);
         /* adds the products to the machines */
 
 
-        Options options = new Options(3);
+        Options options = new Options(4);
         options.add("Buy a product");
         options.add("Refill a product");
+        options.add("See wallet of the machine");
         options.add("Exit");
-        /* adds the options to the menu */
+        /* add the options to the menu */
 
 
         boolean exit = true;
-
+        int optionSelected;
+        Management management = new Management();
 
         do{
             options.print();
-
-            if (options.askOption() == 0){
-
-                machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
-                machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
-                machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
-                Management management = new Management();
-
+            optionSelected = options.askOption();
+            machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
+            machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
+            machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
+            if (optionSelected == 1){
                 switch (management.selectMachine()){
                     case 1:
                         machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
-                        drinkMachine.buyProduct(management.askNumber());
+                        System.out.println("Select the product you want to buy");
+                        drinkMachine.buyProduct(management.askNumber(), drinkMachine.getMoney());
                         break;
                     case 2:
                         machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
-                        healthyMachine.buyProduct(management.askNumber());
+                        System.out.println("Select the product you want to buy");
+                        healthyMachine.buyProduct(management.askNumber(), healthyMachine.getMoney());
                         break;
                     case 3:
                         machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
-                        unhealthyMachine.buyProduct(management.askNumber());
+                        System.out.println("Select the product you want to buy");
+                        unhealthyMachine.buyProduct(management.askNumber(), unhealthyMachine.getMoney());
                         break;
                 }
+            } else if (optionSelected == 2){
+                switch (management.selectMachine()){
+                    case 1:
+                        machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
+                        System.out.println("Which product we have to refill?");
+                        drinkMachine.showRefilling(drinkMachine.refillProduct(management.askNumber()));
+                        break;
+                    case 2:
+                        machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
+                        System.out.println("Which product we have to refill?");
+                        drinkMachine.showRefilling(healthyMachine.refillProduct(management.askNumber()));
+                        break;
+                    case 3:
+                        machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
+                        System.out.println("Which product we have to refill?");
+                        drinkMachine.showRefilling(unhealthyMachine.refillProduct(management.askNumber()));
+                        break;
+                }
+            } else if(optionSelected == 3){
+                switch (management.selectMachine()){
+                    case 1:
+                        drinkMachine.getMoney().printWallet();
+                        break;
+                    case 2:
+                        healthyMachine.getMoney().printWallet();
+                        break;
+                    case 3:
+                        unhealthyMachine.getMoney().printWallet();
+                        break;
+                }
+            } else if(optionSelected == 4){
                 exit = false;
+            } else {
+                System.out.println("Invalid option");
             }
-
-
-
-
-
-
         }while(exit);
 
 

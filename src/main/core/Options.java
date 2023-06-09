@@ -55,7 +55,7 @@ public class Options {
 
     public void print() {
         for (int i = 0; i < size; i++) {
-            System.out.println(i + ". " + items[i]);
+            System.out.println((i + 1)+ ". " + items[i]);
         }
     }
     public int askOption(){
