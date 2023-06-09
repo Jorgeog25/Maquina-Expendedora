@@ -1,12 +1,10 @@
 package main.core;
 
-public abstract class Food extends Product implements Sell{
+public interface Food{
 
-    private double grams;
-
-    public Food(double price, String name, int id, int quantity) {
-        super(price, name, id, quantity);
-        this.grams = 150;
-    }
+    public double getPrice();
+    public String getName();
+    public int getProductId();
+    public int getUnits();
 
 }
