@@ -13,10 +13,6 @@ public class Coin {
         return value;
     }
 
-    public void setValue(double value) {
-        this.value = value;
-    }
-
     public int getQuantity() {
         return quantity;
     }

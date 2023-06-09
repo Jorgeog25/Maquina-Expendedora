@@ -26,24 +26,12 @@ public abstract class Product implements Food{
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getProductId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUnits() {

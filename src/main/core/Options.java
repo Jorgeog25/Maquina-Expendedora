@@ -29,19 +29,6 @@ public class Options {
         }
     }
 
-    public String[] getItems() {
-        return items;
-    }
-
-    public String getItem(int index) {
-
-        if (index < 0 || index >= size) {
-            return null;
-        }
-
-        return items[index];
-    }
-
     public int getSize() {
         return size;
     }
@@ -63,17 +50,5 @@ public class Options {
         Scanner optionSelection = new Scanner(System.in);
         option = optionSelection.nextInt();
         return option;
-    }
-    public int decision(int option){
-        if (option == 1) {
-            return 1;
-        } else if (option == 2) {
-            return 2;
-        } else if (option == 3) {
-            return 3;
-        } else {
-            System.out.println("Invalid option");
-            return 4;
-        }
     }
 }

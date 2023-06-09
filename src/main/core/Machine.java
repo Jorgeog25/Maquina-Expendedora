@@ -1,9 +1,11 @@
 package main.core;
 
+import main.core.exceptions.NoProductAdded;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Machine {
+public class Machine implements PreMachine {
         private int id;
         private ArrayList<Product> products;
         private Wallet money;
@@ -19,23 +21,15 @@ public class Machine {
             return products;
         }
 
-        public void setProducts(ArrayList<Product> products) {
-            this.products = products;
+        public void setProducts(ArrayList<Product> products)throws NoProductAdded {
+            if (products.size() == 0) {
+                throw new NoProductAdded("No products added");
+            } else {
+                this.products = products;
+            }
         }
-        public int machineSize(){
-            return this.products.size();
-        }
-
         public int getID(){
         return this.id;
-    }
-
-
-
-    public void productsList(){
-        for(Product p:this.products){
-            System.out.println(p.getName()+" "+p.getPrice()+" "+p.getUnits());
-        }
     }
     public double askMoney(){
         Scanner money = new Scanner(System.in);
@@ -64,10 +58,6 @@ public class Machine {
         return money;
     }
 
-    public void setMoney(Wallet money) {
-        this.money = money;
-    }
-
     public void buyProduct(int id, Wallet wallet){
         double change;
         for(Product p:this.products){
@@ -87,7 +77,7 @@ public class Machine {
                             System.out.println("Not enough money in the machine");
                         }
                     } else {
-                        System.out.println("Please enter more money");
+                        System.out.println("You have to enter more money");
                     }
                 } else{
                     System.out.println("Sorry we need to refill the machine");

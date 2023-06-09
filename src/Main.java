@@ -1,4 +1,5 @@
 import main.core.*;
+import main.core.exceptions.NoProductAdded;
 import main.print.MachinePrinting;
 
 import java.util.ArrayList;
@@ -9,15 +10,15 @@ public class Main {
 
 
 
-        Wallet walletMachine1 = new Wallet();
+        DrinkWallet walletMachine1 = new DrinkWallet();
         walletMachine1.addCoins();
         /* adds the values and quantities to the wallet of the first machine */
 
-        Wallet walletMachine2 = new Wallet();
+        HealthyWallet walletMachine2 = new HealthyWallet();
         walletMachine2.addCoins();
         /* adds the values and quantities to the wallet of the second machine */
 
-        Wallet walletMachine3 = new Wallet();
+        UnhealthyWallet walletMachine3 = new UnhealthyWallet();
         walletMachine3.addCoins();
         /* adds the values and quantities to the wallet of the third machine */
 
@@ -51,19 +52,22 @@ public class Main {
         snacksList.add(orange);
         snacksList.add(pear);
 
-        UnhealthyFood chips = new UnhealthyFood(1, "Chips", 10, 10);
-        UnhealthyFood chocolate = new UnhealthyFood(2, "Chocolate", 50, 10);
-        UnhealthyFood cookies = new UnhealthyFood(3, "Cookies", 30, 10);
-        UnhealthyFood candy = new UnhealthyFood(4, "Candy", 12, 10);
+        UnhealthyFood chips = new UnhealthyFood(1.5, "Chips", 10, 10);
+        UnhealthyFood chocolate = new UnhealthyFood(1.1, "Chocolate", 50, 10);
+        UnhealthyFood cookies = new UnhealthyFood(1.05, "Cookies", 30, 10);
+        UnhealthyFood candy = new UnhealthyFood(1.75, "Candy", 12, 10);
         unhealthyList.add(chips);
         unhealthyList.add(chocolate);
         unhealthyList.add(cookies);
         unhealthyList.add(candy);
         /*list of products */
-
-        drinkMachine.setProducts((ArrayList<Product>) drinksList);
-        healthyMachine.setProducts((ArrayList<Product>) snacksList);
-        unhealthyMachine.setProducts((ArrayList<Product>) unhealthyList);
+        try{
+            drinkMachine.setProducts((ArrayList<Product>) drinksList);
+            healthyMachine.setProducts((ArrayList<Product>) snacksList);
+            unhealthyMachine.setProducts((ArrayList<Product>) unhealthyList);
+        } catch (NoProductAdded e) {
+            e.getMessage();
+        }
         /* adds the products to the machines */
 
 
@@ -86,23 +90,34 @@ public class Main {
             machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
             machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
             if (optionSelected == 1){
-                switch (management.selectMachine()){
-                    case 1:
-                        machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
-                        System.out.println("Select the product you want to buy");
-                        drinkMachine.buyProduct(management.askNumber(), drinkMachine.getMoney());
-                        break;
-                    case 2:
-                        machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
-                        System.out.println("Select the product you want to buy");
-                        healthyMachine.buyProduct(management.askNumber(), healthyMachine.getMoney());
-                        break;
-                    case 3:
-                        machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
-                        System.out.println("Select the product you want to buy");
-                        unhealthyMachine.buyProduct(management.askNumber(), unhealthyMachine.getMoney());
-                        break;
+                int jam = (int)(Math.random() * (100+1));
+                if (jam<=2){
+                    System.err.println("The machine is jammed, please try again later");
+                }else{
+                    int failure = (int)(Math.random() * (100+1));
+                    if (failure<=3){
+                        System.err.println("The machine is broken, please try again later");
+                    }else {
+                        switch (management.selectMachine()){
+                            case 1:
+                                machinePrinting.printMachineProducts(drinkMachine, drinkMachine.getID());
+                                System.out.println("Select the product you want to buy");
+                                drinkMachine.buyProduct(management.askNumber(), drinkMachine.getMoney());
+                                break;
+                            case 2:
+                                machinePrinting.printMachineProducts(healthyMachine, healthyMachine.getID());
+                                System.out.println("Select the product you want to buy");
+                                healthyMachine.buyProduct(management.askNumber(), healthyMachine.getMoney());
+                                break;
+                            case 3:
+                                machinePrinting.printMachineProducts(unhealthyMachine, unhealthyMachine.getID());
+                                System.out.println("Select the product you want to buy");
+                                unhealthyMachine.buyProduct(management.askNumber(), unhealthyMachine.getMoney());
+                                break;
+                        }
+                    }
                 }
+
             } else if (optionSelected == 2){
                 switch (management.selectMachine()){
                     case 1:
@@ -135,9 +150,8 @@ public class Main {
                 }
             } else if(optionSelected == 4){
                 exit = false;
-            } else {
-                System.out.println("Invalid option");
             }
+
         }while(exit);
 
 
