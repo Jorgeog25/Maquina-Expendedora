@@ -1,27 +1,10 @@
 package main.core;
 
-public class Drinks extends Product implements Sell{
+public class Drinks extends Product {
 
-    private double mililiters;
-
-    public Drinks(double price, String name, int id, int quantity) {
-        super(price, name, id, quantity);
-        this.mililiters = 330;
+    public Drinks(double price, String name, int id, int units) {
+        super(price, name, id, units);
     }
 
 
-    @Override
-    public boolean isAvailable() {
-        return false;
-    }
-
-    @Override
-    public void replanishStock(int elements) {
-
-    }
-
-    @Override
-    public void upPrice(int percentage) {
-
-    }
 }

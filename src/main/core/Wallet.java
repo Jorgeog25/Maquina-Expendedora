@@ -1,63 +1,41 @@
 package main.core;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-public class Wallet {
+public abstract class Wallet {
 
-    private ArrayList<Float> value;
+    private ArrayList<Double> value;
     private ArrayList<Integer> quantity;
 
     public Wallet(){
         this.value = new ArrayList<>();
         this.quantity = new ArrayList<>();
     }
+    public void addValue(ArrayList value){
+        value.add(0.05);
+        value.add(0.10);
+        value.add(0.25);
+        value.add(1.0);
+        value.add(2.0);
+        value.add(5);
+        value.add(10);
+        value.add(20);
+    }
+    public void addQuantityMachine1(ArrayList quantity){}
 
-    public void put(float val, Integer quant){
-        int pos=value.indexOf(val);
-        if(pos!=-1){
-            this.quantity.set(pos, this.quantity.get(pos)+quant;
-        } else{
-            value.add(val);
-            quantity.add(quant);
+    public void setValue(ArrayList<Double> value) {
+        this.value = value;
     }
+
+    public ArrayList<Integer> getQuantity(double val) {
+        return quantity;
     }
-    public ArrayList<Float> getValue() {
+
+    public void setQuantity(ArrayList<Integer> quantity) {
+        this.quantity = quantity;
+    }
+
+    public ArrayList<Double> getValue() {
         return value;
-    }
-
-    public int getQuantity(float val){
-        int pos=value.indexOf(val);
-        if(pos!=-1){
-            return this.quantity.get(pos);
-        } else{
-            return 0;
-        }
-    }
-
-    public void delete(float val){
-        int pos = this.value.indexOf(val);
-        if(pos!=-1){
-            this.value.remove(pos);
-            this.quantity.remove(pos);
-        }
-    }
-
-    public float getTotal(){
-        float total=0;
-        for(float val:this.value){
-            total+=val*this.getQuantity(val));
-        }
-        return total;
-    }
-
-    public void information(){
-        for(float val:this.value){
-            if(val>=1){
-            System.out.println("Dollar Bill: "+val+" -> "+this.getQuantity(val));
-        }else{
-            System.out.println("Coins "+val+" -> "+this.getQuantity(val));
-        }
-    }
     }
 }

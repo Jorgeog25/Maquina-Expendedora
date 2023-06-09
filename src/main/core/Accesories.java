@@ -3,6 +3,7 @@ package main.core;
 public class Accesories extends Product implements Sell{
 
     private int units;
+    private int stock;
 
     public Accesories(double price, String name, int id) {
         super(price, name, id);
@@ -10,9 +11,11 @@ public class Accesories extends Product implements Sell{
 
     @Override
     public boolean isAvailable() {
+
         if(stock>0){
             return true;
         }
+        return false;
     }
 
     @Override
