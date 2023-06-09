@@ -1,5 +1,5 @@
 # Máquina Expendedora
-![Máquina Expendedora](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.patiadiabetes.com%2Fla-maquina-vending-te-odia-correspondele%2F&psig=AOvVaw2jAtH-v6ZGMNqrel7MzCMs&ust=1686428657415000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPilv7uCt_8CFQAAAAAdAAAAABAF)
+![Máquina Expendedora](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/HK_Sunday_night_West_Kln_Promenade_Food_Vending_Machine_%E5%B0%8F%E9%A3%9F_01.JPG/220px-HK_Sunday_night_West_Kln_Promenade_Food_Vending_Machine_%E5%B0%8F%E9%A3%9F_01.JPG)
 ## Funcionamiento e Instrucciones
 Inicialmente, aparecen las diferentes opciones. Para seleccionar que opción desea, tiene que introducir 
 el número de la opción que desea. En caso de que desee salir, aparece la opción "Exit". El resto de opciones forman parte del funcionamiento del programa.
